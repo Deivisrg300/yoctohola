@@ -1,17 +1,6 @@
-SUMMARY = "Ejemplo de BitBake con Makefile"
-LICENSE = "CLOSED"
-SRC_URI = "file://Makefile \
-           file://main.c"
+all:
+    gcc -o holamundogit helloworld.c
 
-S = "${WORKDIR}"
-
-inherit autotools
-
-do_compile() {
-    oe_runmake
-}
-
-do_install() {
-    install -d ${D}${bindir}
-    install -m 0755 holamundogit ${D}${bindir}
-}
+install:
+    install -d $(DESTDIR)/usr/bin
+    install -m 0755 holamundogit $(DESTDIR)/usr/bin
